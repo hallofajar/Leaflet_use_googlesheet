@@ -1,5 +1,8 @@
 <?php
-$dataSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpS-Z15J6JqjqyepoKENVStfvUKXcIP7FsClL2j4_BxHu1mENQRNPeZ2VYcnVvGjOh8PYuCDANcukb/pub?gid=1227738134&single=true&output=csv";
+
+  include('datadusun.php');
+
+  $dataSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpS-Z15J6JqjqyepoKENVStfvUKXcIP7FsClL2j4_BxHu1mENQRNPeZ2VYcnVvGjOh8PYuCDANcukb/pub?gid=1227738134&single=true&output=csv";
 
   $rowCount = 0;
   $features = array();
@@ -44,10 +47,11 @@ $dataSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpS-Z15J
     $output = array('error' => 'Problem Reading Google CSV');
   }  // end else, file open fail
 
+  //print_r($new_titikdusun);
 
-  //Read geojson file
-  $geojsonAdmin = file_get_contents("../geojson/Data_Dusun.geojson");
-  $polygonAdmin = json_decode($geojsonAdmin, TRUE);
+//   //Read geojson file
+//  $geojsonAdmin = file_get_contents("../geojson/Data_Dusun.geojson");
+  $polygonAdmin = json_decode($json_datatitik, TRUE);
 
 
   foreach ($polygonAdmin['features'] as $key => $first_value) {

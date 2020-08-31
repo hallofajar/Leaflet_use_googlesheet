@@ -38,7 +38,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <div id="mapid"></div>
@@ -49,6 +48,7 @@
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title text-primary" id="feature-title"></h4>
+            <h4 class=""></h4>
           </div>
           <div class="modal-body" id="feature-info"></div>
           <div class="modal-footer">
@@ -72,8 +72,9 @@
         zoomOffset: -1
       }).addTo(map);
 
+
     /* GeoJSON Point */
-    var titikkabkota = L.geoJson(null, {
+    var titikkabkota = L.geoJSON(null, {
       pointToLayer: function (feature, latlng) {
         var icon
         switch (feature.properties.RT) {
@@ -101,6 +102,7 @@
             iconAnchor: [14, 35], //penempatan icon simbol
             popupAnchor: [0, -28], //penempatan popup terhadap icon simbol
           })
+          
         });
 
       },
@@ -121,7 +123,6 @@
               "<table>";
           }
 
-
           layer.on({
             click: function (e) {
               $("#feature-title").html("Kepala Keluarga " + feature.properties.rumah);
@@ -129,7 +130,6 @@
               $("#featureModal").modal("show");
             }
           });
-
 
           layer.bindTooltip(layer.feature.properties.rumah.toString(), {
             direction: 'center',
